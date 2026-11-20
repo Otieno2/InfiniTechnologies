@@ -1,0 +1,206 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-slideUp {
+  animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-slideDown {
+  animation: slideDown 0.3s ease-out;
+}
+
+.animate-slideInRight {
+  animation: slideInRight 0.25s ease-out;
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f5f5f4;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d6d3d1;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a29e;
+}
+
+/* Smooth Transitions */
+* {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Focus Styles */
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid #0B6FA4;
+  outline-offset: 2px;
+}
+
+/* Selection Color */
+::selection {
+  background-color: #BFE7F7;
+  color: #0A1A33;
+}
+
+/* Gradient Text */
+.gradient-text {
+  background: linear-gradient(135deg, #FF7A1A 0%, #22B8EF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glass Effect */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* ---------- InfiniTechnologies brand layer ---------- */
+html { scroll-padding-top: 5.5rem; }
+body { font-family: 'Inter', system-ui, sans-serif; color: #0E1B2E; background: #fff; }
+
+@layer base {
+  h1, h2, h3 { font-family: 'Space Grotesk', 'Inter', sans-serif; letter-spacing: -0.02em; }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 min-h-[48px] px-6 rounded-[10px] text-[15px] font-semibold
+           bg-brand-orange text-brand-navy transition-colors hover:bg-brand-orangeHover;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 min-h-[48px] px-6 rounded-[10px] text-[15px] font-semibold
+           border border-white/30 text-white transition-colors hover:bg-white/10;
+  }
+  .eyebrow { @apply text-[13px] font-semibold uppercase tracking-[0.12em] text-brand-blue; }
+  .eyebrow-dark { @apply text-[13px] font-semibold uppercase tracking-[0.12em] text-brand-cyanLight; }
+  .section-title { @apply font-display text-[clamp(1.75rem,8vw,2rem)] sm:text-[32px] md:text-[44px] leading-[1.1] font-bold mt-3.5 mb-4; }
+  .lead { @apply text-lg leading-relaxed text-brand-muted max-w-[640px]; }
+  .lead-dark { @apply text-lg leading-relaxed text-brand-mist max-w-[640px]; }
+  .card { @apply bg-white border border-brand-line rounded-2xl p-5 sm:p-8 transition-colors hover:border-brand-blue; }
+
+
+  /* Form fields. 16px text stops iOS Safari zooming in on focus. */
+  .field {
+    @apply block w-full min-h-[48px] rounded-[10px] border border-brand-line bg-white px-4 py-3 text-base text-brand-ink
+           placeholder:text-brand-muted/70 transition-colors focus:border-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-blue/20;
+  }
+  .field-error { @apply border-[#B42318] focus:border-[#B42318] focus:ring-[#B42318]/20; }
+  select.field { @apply pr-10; }
+  textarea.field { @apply min-h-[120px] resize-y leading-relaxed; }
+
+  /* FAQ accordion: +/- icon driven by the native <details> open state. */
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq-icon { position: relative; flex: none; width: 14px; height: 14px; }
+  .faq-icon::before, .faq-icon::after {
+    content: ""; position: absolute; background: #0B6FA4; border-radius: 1px; transition: transform 0.2s;
+  }
+  .faq-icon::before { left: 0; right: 0; top: 6px; height: 2px; }
+  .faq-icon::after { top: 0; bottom: 0; left: 6px; width: 2px; }
+  .faq[open] .faq-icon::after { transform: scaleY(0); }
+
+  .check-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.625rem; font-size: 15px; color: #1E2E45; }
+  .check-list li { position: relative; padding-left: 1.625rem; line-height: 1.45; }
+  .check-list li::before {
+    content: ""; position: absolute; left: 4px; top: 4px; width: 6px; height: 11px;
+    border: solid #0B6FA4; border-width: 0 2px 2px 0; transform: rotate(45deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

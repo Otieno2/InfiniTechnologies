@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222 22% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 22% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 22% 12%;
+
+    --primary: 200 88% 35%;          /* InfiniTechnologies blue #0B6FA4 */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 24 100% 55%;        /* InfiniTechnologies orange #FF7A1A */
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 210 20% 96%;
+    --muted-foreground: 215 15% 40%;
+
+    --accent: 196 84% 53%;           /* InfiniTechnologies cyan #22B8EF */
+    --accent-foreground: 222 22% 12%;
+
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 215 20% 90%;
+    --input: 215 20% 90%;
+    --ring: 200 88% 35%;
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 222 30% 8%;
+    --foreground: 0 0% 96%;
+
+    --card: 222 30% 10%;
+    --card-foreground: 0 0% 96%;
+
+    --popover: 222 30% 10%;
+    --popover-foreground: 0 0% 96%;
+
+    --primary: 200 88% 40%;          /* InfiniTechnologies blue (lighter for dark) */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 24 100% 60%;        /* InfiniTechnologies orange (lighter for dark) */
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 222 25% 16%;
+    --muted-foreground: 215 15% 70%;
+
+    --accent: 196 84% 60%;           /* InfiniTechnologies cyan (lighter for dark) */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 222 25% 18%;
+    --input: 222 25% 18%;
+    --ring: 200 88% 40%;
+  }
+
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-brand-gradient {
+    @apply bg-brand-gradient bg-clip-text text-transparent;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
