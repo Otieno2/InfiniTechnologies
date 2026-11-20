@@ -18,9 +18,9 @@ export const demos = [
       'Mobile-responsive with PWA capabilities'
     ],
     proves: 'Full-featured e-commerce with admin panel, real-time inventory, and professional UI.',
-    status: 'in-progress',
+    status: 'live',
     image: null,
-    link: '#',
+    link: '/demo/medical-shop',
   },
   {
     id: 'stock-tracker',

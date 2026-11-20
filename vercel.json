@@ -1,0 +1,33 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "services": {
+    "main-site": {
+      "root": ".",
+      "framework": "vite",
+      "buildCommand": "npm run build",
+      "outputDirectory": "dist",
+      "installCommand": "npm install"
+    },
+    "medical-shop-demo": {
+      "root": "public/demos/medical-shop",
+      "framework": "nextjs",
+      "buildCommand": "npm run build",
+      "installCommand": "npm install"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/demo/medical-shop/:path*",
+      "destination": {
+        "service": "medical-shop-demo",
+        "path": "/:path*"
+      }
+    },
+    {
+      "source": "/(.*)",
+      "destination": {
+        "service": "main-site"
+      }
+    }
+  ]
+}
