@@ -1,8 +1,9 @@
 import { waLink } from '../config';
 import { serviceGroups } from '../data/services';
+import { packages } from '../data/packages';
 
 const enquiry = (name) =>
-  waLink(`Hi InfiniTechnologies, I’m interested in ${name}. I’d like to discuss what I need.`);
+  waLink(`Hi InfiniTechnologies, I'm interested in ${name}. I'd like to discuss what I need.`);
 
 export default function Services() {
   return (
@@ -22,34 +23,53 @@ export default function Services() {
               </div>
 
               <div className="border-t border-brand-line">
-                {group.services.map((service) => (
-                  <article key={service.id} className="grid gap-4 border-b border-brand-line py-7 last:border-b-0">
-                    <div>
-                      <h4 className="font-display text-xl font-semibold leading-snug">{service.name}</h4>
-                      <p className="mt-2 text-base leading-relaxed text-brand-muted">{service.summary}</p>
-                    </div>
-                    <ul className="check-list">
-                      {service.includes.map((item) => (
-                        <li key={item}>{item}</li>
-                      ))}
-                    </ul>
-                    {service.note && (
-                      <p className="rounded-lg border-l-[3px] border-brand-cyan bg-white px-4 py-3 text-sm leading-relaxed text-brand-body">
-                        {service.note}
-                      </p>
-                    )}
-                    <div>
-                      <a
-                        href={enquiry(service.name)}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex min-h-[44px] items-center text-[15px] font-semibold text-brand-blue hover:underline"
-                      >
-                        Ask about {service.name} on WhatsApp
-                      </a>
-                    </div>
-                  </article>
-                ))}
+                {group.services.map((service) => {
+                  const pkg = service.packageId ? packages.find(p => p.id === service.packageId) : null;
+                  const showPricing = pkg || service.careLink;
+                  const isCustomQuoted = service.customQuoted;
+                  
+                  return (
+                    <article key={service.id} className="grid gap-4 border-b border-brand-line py-7 last:border-b-0">
+                      <div>
+                        <h4 className="font-display text-xl font-semibold leading-snug">{service.name}</h4>
+                        <p className="mt-2 text-base leading-relaxed text-brand-muted">{service.summary}</p>
+                      </div>
+                      <ul className="check-list">
+                        {service.includes.map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                      {service.note && (
+                        <p className="rounded-lg border-l-[3px] border-brand-cyan bg-white px-4 py-3 text-sm leading-relaxed text-brand-body">
+                          {service.note}
+                        </p>
+                      )}
+                      <div className="flex flex-wrap items-center gap-4">
+                        {showPricing && (
+                          <a
+                            href={service.careLink ? '/#care' : '/#pricing'}
+                            className="inline-flex min-h-[44px] items-center text-[15px] font-semibold text-brand-blue hover:underline"
+                          >
+                            {service.careLink ? 'See InfiniCare plans' : 'See pricing'}
+                          </a>
+                        )}
+                        {isCustomQuoted && (
+                          <span className="rounded-full bg-white px-3 py-1 text-[13px] font-medium text-brand-muted border border-brand-line">
+                            Custom-quoted
+                          </span>
+                        )}
+                        <a
+                          href={enquiry(service.name)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex min-h-[44px] items-center text-[15px] font-semibold text-brand-blue hover:underline"
+                        >
+                          Ask about {service.name}
+                        </a>
+                      </div>
+                    </article>
+                  );
+                })}
               </div>
             </div>
           ))}

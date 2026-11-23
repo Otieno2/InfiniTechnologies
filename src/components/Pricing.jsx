@@ -16,10 +16,10 @@ export default function Pricing() {
       <div className="max-w-6xl mx-auto px-5 sm:px-8">
         <h2 className="section-title max-w-[760px] !mt-0">Starting prices and clear terms</h2>
         <p className="lead">
-          Three packages with a starting price, so you can see whether it fits your budget before you ask. Your written quote confirms the exact price for your scope.
+          Four packages with a starting price, so you can see whether it fits your budget before you ask. Your written quote confirms the exact price for your scope.
         </p>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {packages.map((p) => (
             <article key={p.id} className="card flex flex-col">
               <p className="font-display text-sm font-semibold text-brand-blue">One-time project fee</p>

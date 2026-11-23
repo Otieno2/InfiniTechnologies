@@ -6,22 +6,22 @@ export const kes = (n) => `KES ${n.toLocaleString('en-KE')}`;
 
 export const packages = [
   {
+    id: 'website',
+    name: 'Business website',
+    from: 22000,
+    summary: 'A professional mobile-first website that shows what you do, builds trust and makes it easy for customers to contact you.',
+    includes: ['About, services and contact pages', 'Mobile-first responsive design', 'Domain and hosting set-up', 'Basic technical SEO'],
+    bestFor: 'Service businesses and professionals who need an online presence',
+    href: '/websites/',
+  },
+  {
     id: 'shop',
     name: 'Shop website with WhatsApp ordering',
     from: 35000,
     summary: 'A mobile-first website where customers browse your products and send an order request to your WhatsApp.',
-    includes: ['Product catalogue with photos and prices', 'Cart and order request', 'Domain and hosting set-up'],
+    includes: ['Product catalogue with photos and prices', 'Cart and order request', 'Domain and hosting set-up', 'Basic technical SEO'],
     bestFor: 'Shops that sell from WhatsApp chats',
     href: '/websites/',
-  },
-  {
-    id: 'stock',
-    name: 'Stock and sales tracker',
-    from: 45000,
-    summary: 'One simple system for stock in and out, low-stock warnings and a daily sales summary.',
-    includes: ['Stock in and out records', 'Low-stock warnings', 'Daily sales summary'],
-    bestFor: 'Businesses tracking stock in notebooks or spreadsheets',
-    href: '/business-systems/',
   },
   {
     id: 'assistant',
@@ -31,6 +31,15 @@ export const packages = [
     includes: ['Answers from your approved FAQs', 'Booking details collected for you to confirm', 'Hand-over to a person'],
     bestFor: 'Businesses answering the same questions all day',
     href: '/whatsapp-assistants/',
+  },
+  {
+    id: 'systems',
+    name: 'Custom Business Systems',
+    from: 50000,
+    summary: 'Practical software built around how you work: stock tracking, customer records, sales reports, bookings or workflows.',
+    includes: ['Scoped to your business needs', 'Staff access and permissions', 'Reports and data exports', 'Training and documentation'],
+    bestFor: 'Businesses that track critical information in notebooks or scattered spreadsheets',
+    href: '/business-systems/',
   },
 ];
 

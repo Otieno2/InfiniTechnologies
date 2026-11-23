@@ -32,22 +32,30 @@ About InfiniTechnologies:
 - A technology business based in Kenya, founded and led by Otieno Felix Opiyo. It works remotely with clients elsewhere too.
 - Positioning: helps small businesses work smarter through professional websites, practical business software and customer-service automation.
 
-Services:
-- Websites & Online Stores: responsive business websites and online stores that help customers find products, make contact and place orders.
-- Custom Business Systems: practical tools for stock, customer records, sales reports and workflows, scoped to how the business operates.
+Core packages with standard starting prices:
+- Business website: a professional mobile-first website that shows what you do and makes it easy for customers to contact you. Starting from KES 22,000.
+- Shop website with WhatsApp ordering: a mobile-first website where customers browse products and send order requests to WhatsApp. Starting from KES 35,000.
+- WhatsApp FAQ and booking assistant: answers common questions from approved information, collects booking details and hands over to a person when needed. Starting from KES 25,000.
+- Custom Business Systems: practical software built around how you work, including stock tracking, customer records, bookings, sales reports and workflows. Starting from KES 50,000.
+
+Other services (custom-quoted):
 - Technology Consulting: practical advice, solution planning and technical assessments before development.
-- Utility Bots: task-focused WhatsApp or Telegram bots for FAQs, reminders, enquiries and simple workflows, replying from rules the client defines.
 - AI Assistants: assistants for approved FAQs, customer guidance and staff knowledge. Scope depends on connected data, access and safeguards. AI can make mistakes.
 - Agentic Automation: controlled multi-step automations with permissions, activity logs and human approval for sensitive actions.
 - Payment Integrations: M-PESA through Safaricom Daraja, and Paystack (including M-PESA and card) for eligible Kenyan merchants. Availability depends on merchant eligibility, supported channels and provider approval. Provider fees are separate. Stripe, PayPal and other providers are only offered after checking the specific merchant account.
-- SEO, Hosting & Care: hosting setup, essential technical SEO, backups and ongoing maintenance under an agreed plan.
+- SEO, Hosting & Care: basic technical SEO is included in all website packages. Ongoing SEO upkeep is part of InfiniCare Business and Systems plans. Dedicated SEO services are quoted separately.
 - Separate from the technology services: independent administrative help with business registration and KRA paperwork, and guidance with HELB and KUCCPS applications. This is not legal or tax advice and is not affiliated with any government body. Customers sign in and submit from their own accounts.
+
+InfiniCare monthly care plans:
+- Essential (from KES 2,000/month): for a simple website. Hosting, weekly backups, updates, email support within one business day, one small content change a month.
+- Business (from KES 4,500/month): for a shop site or growing business. Everything in Essential, up to 3 hours of changes a month, WhatsApp support same business day, monthly check-up, essential technical SEO upkeep.
+- Systems (from KES 8,000/month): for a stock system or assistant. Everything in Business, daily backups, up to 6 hours of changes a month, monthly review call, monitoring of connected services.
 
 How working with InfiniTechnologies works:
 - Process: Discovery, Scope and Quote, Build, Test and Launch, Support.
 - Every project is quoted individually and in writing before work starts. Nothing is binding until the customer accepts a written quote.
-- Custom projects are paid as a deposit plus milestone payments tied to deliverables or approvals, agreed in writing first.
-- Pricing models: a one-time project fee, or a monthly care plan for hosting, maintenance and support. Domain, hosting, payment provider, AI usage, SMS and WhatsApp messaging fees are paid to those providers and listed in the quote.
+- Custom projects are paid as a deposit plus milestone payments tied to deliverables or approvals, agreed in writing first. Standard terms: 50% deposit to start, then balance in milestone payments.
+- Domain, hosting, payment provider, AI usage, SMS and WhatsApp messaging fees are paid to those providers and listed in the quote.
 - Ownership of agreed work passes to the client as set out in the written agreement, normally on final payment. Reusable code, open-source components and third-party services keep their own licences.
 - Business hours: Monday to Friday, 09:00 to 18:00 East Africa Time. Replies come within one business day.
 - Contact: WhatsApp and phone +254 743 179 786, or the quote form on the website.

@@ -1,5 +1,6 @@
 // Core technology offer, grouped by what the customer is trying to achieve.
 // `includes` lists typical inclusions only; the written quote defines exact scope.
+// Services with packageId have standard starting prices in Pricing; others are custom-quoted.
 
 export const serviceGroups = [
   {
@@ -17,6 +18,7 @@ export const serviceGroups = [
           'Mobile-first layout with clear contact paths',
         ],
         note: 'Online checkout needs a supported payment provider. See Payment Integrations.',
+        packageId: 'website', // Links to standard pricing
       },
       {
         id: 'systems',
@@ -28,6 +30,7 @@ export const serviceGroups = [
           'Reports and secure client portals',
         ],
         note: 'We agree what is in and out of scope before building starts.',
+        packageId: 'systems', // Links to standard pricing
       },
       {
         id: 'consulting',
@@ -38,6 +41,7 @@ export const serviceGroups = [
           'System and solution planning',
           'Assessment of an existing site or tool',
         ],
+        customQuoted: true, // No standard package, quoted individually
       },
     ],
   },
@@ -56,6 +60,7 @@ export const serviceGroups = [
           'Enquiry capture and routing to your team',
         ],
         note: 'Runs on WhatsApp or Telegram. WhatsApp access and messaging fees are set by the platform provider.',
+        packageId: 'assistant', // Links to WhatsApp assistant package
       },
       {
         id: 'ai-assistant',
@@ -67,6 +72,7 @@ export const serviceGroups = [
           'Hand-over to a person when it cannot help',
         ],
         note: 'Scope depends on the data connected, access granted and safeguards agreed. AI can make mistakes, so we set limits and test before launch.',
+        customQuoted: true, // More complex, needs individual scoping
       },
       {
         id: 'agentic',
@@ -78,6 +84,7 @@ export const serviceGroups = [
           'Activity logs and approval points',
         ],
         note: 'Built case by case, after we agree which actions are safe to automate.',
+        customQuoted: true, // Specialized, needs individual assessment
       },
     ],
   },
@@ -96,6 +103,7 @@ export const serviceGroups = [
           'Server-side payment verification and testing',
         ],
         note: 'Provider approval and transaction fees are separate from our fee. Other providers, such as Stripe or PayPal, are assessed per merchant account.',
+        customQuoted: true, // Complexity varies by provider and merchant setup
       },
       {
         id: 'seo-hosting',
@@ -106,7 +114,8 @@ export const serviceGroups = [
           'Essential technical SEO',
           'Backups and monthly maintenance',
         ],
-        note: 'What is included in hosting and maintenance is set out in your plan.',
+        note: 'Basic technical SEO is included in all website packages. Ongoing SEO upkeep is part of InfiniCare Business and Systems plans. Dedicated SEO services are quoted separately.',
+        careLink: true, // Links to InfiniCare plans, not a one-time package
       },
     ],
   },
