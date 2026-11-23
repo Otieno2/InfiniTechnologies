@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Services from './components/Services';
-import Portfolio from './components/Portfolio';
 import Process from './components/Process';
 import Pricing from './components/Pricing';
 import FAQ from './components/FAQ';
@@ -77,7 +76,6 @@ function App() {
           <Hero />
           <main id="main">
             <Services />
-            <Portfolio />
             <Process />
             <Pricing />
             <FAQ />

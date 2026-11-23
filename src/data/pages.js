@@ -5,7 +5,6 @@ export const pages = {
   websites: {
     path: '/websites/',
     packageId: 'shop',
-    demoId: 'shop-site',
     title: 'Websites and online stores for small businesses in Kenya | InfiniTechnologies',
     description: 'Mobile-first business websites and online stores with a product catalogue and WhatsApp ordering. Starting prices, written quotes and support after launch.',
     h1: 'Websites and online stores for small businesses',
@@ -29,7 +28,6 @@ export const pages = {
   'business-systems': {
     path: '/business-systems/',
     packageId: 'stock',
-    demoId: 'stock-tracker',
     title: 'Stock and sales tracking systems for small businesses | InfiniTechnologies',
     description: 'Replace notebooks and scattered spreadsheets with one simple stock and sales system: stock records, low-stock warnings and a daily sales summary.',
     h1: 'Stock and sales tracking for small businesses',
@@ -53,7 +51,6 @@ export const pages = {
   'whatsapp-assistants': {
     path: '/whatsapp-assistants/',
     packageId: 'assistant',
-    demoId: 'faq-assistant',
     title: 'WhatsApp FAQ and booking assistants for small businesses | InfiniTechnologies',
     description: 'A WhatsApp assistant that answers common questions from your approved list, collects booking details and hands over to a person when it cannot help.',
     h1: 'WhatsApp FAQ and booking assistants',

@@ -1,218 +1,106 @@
-# Deployment Guide - InfiniTechnologies Multi-Service Project
+# Deployment Guide - InfiniTechnologies
 
-This repository is configured to deploy as a **single Vercel project** with **multiple services**.
+This repository deploys the InfiniTechnologies marketing and enquiry site as a single Vercel service.
 
 ## Architecture
 
-```
-your-domain.com              → Main InfiniTechnologies site (Vite/React)
-your-domain.com/demo/medical-shop → MedTech Solutions demo (Next.js)
+```text
+your-domain.com → InfiniTechnologies site (Vite/React)
 ```
 
-## Services
+## Service
 
-### 1. **main-site** (Primary)
+- **Service:** `main-site`
 - **Framework:** Vite + React 19
 - **Root:** Repository root
-- **Purpose:** InfiniTechnologies marketing site
-- **Build:** `npm run build` → `dist/`
-- **Public:** All routes except `/demo/medical-shop/*`
+- **Build:** `npm run build`
+- **Output:** `dist/`
+- **Routing:** All requests are handled by the main site through `vercel.json`.
 
-### 2. **medical-shop-demo** (Internal, mounted at `/demo/medical-shop`)
-- **Framework:** Next.js 16
-- **Root:** `public/demos/medical-shop/`
-- **Purpose:** E-commerce platform demonstration
-- **Build:** `npm run build` → `.next/`
-- **Public:** Only accessible via `/demo/medical-shop/*` path
+## Pre-deployment checks
 
-## Pre-Deployment Checklist
-
-### 1. Set up Supabase (Required for MedTech demo)
-1. Create a Supabase project at https://supabase.com
-2. Run migrations from `public/demos/medical-shop/supabase/migrations/` in SQL Editor (in order)
-3. Run seed script: `cd public/demos/medical-shop && npm run seed`
-4. Copy Supabase URL and anon key for environment variables
-
-### 2. Prepare Environment Variables
-See section below for required variables.
-
-## Deployment Steps
-
-### Option 1: Deploy via Vercel Dashboard (Recommended)
-
-1. **Import Repository**
-   - Go to https://vercel.com/new
-   - Import `Otieno2/InfiniTechnologies` from GitHub
-   - Vercel will auto-detect the `vercel.json` configuration
-
-2. **Configure Environment Variables**
-   - Go to Project Settings → Environment Variables
-   - Add the variables listed below
-   - Apply to **Production** environment
-
-3. **Deploy**
-   - Click "Deploy"
-   - Vercel will build both services in parallel
-
-### Option 2: Deploy via Vercel CLI
+Run these commands from the repository root:
 
 ```bash
-# Install Vercel CLI
-npm install -g vercel
-
-# Login
-vercel login
-
-# Deploy to production
-vercel --prod
-
-# When prompted, set environment variables or add them later in dashboard
-```
-
-## Environment Variables
-
-### Main Site (`main-site` service)
-
-| Variable | Required | Description | Example |
-|----------|----------|-------------|---------|
-| `VITE_QUOTE_FORM_ENDPOINT` | Optional | Form submission endpoint | `https://formspree.io/f/xxx` |
-| `VITE_EVA_API_URL` | Optional | EVA AI assistant API | `https://eva-proxy.workers.dev` |
-
-### Medical Shop Demo (`medical-shop-demo` service)
-
-| Variable | Required | Description | Example |
-|----------|----------|-------------|---------|
-| `NEXT_PUBLIC_SUPABASE_URL` | **Yes** | Supabase project URL | `https://xxx.supabase.co` |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | **Yes** | Supabase anonymous key | `eyJhbGc...` |
-| `NEXT_PUBLIC_SITE_URL` | Auto | Base URL (auto-set by Vercel) | `https://your-domain.com/demo/medical-shop` |
-| `NEXT_PUBLIC_CONTACT_PHONE` | Optional | Override default phone | `+254743179786` |
-| `NEXT_PUBLIC_CONTACT_WHATSAPP` | Optional | Override default WhatsApp | `254743179786` |
-| `NEXT_PUBLIC_CONTACT_EMAIL` | Optional | Override default email | `info@infinitechnologies.co.ke` |
-
-**Note:** Set environment variables in **Vercel Dashboard** → Project Settings → Environment Variables. 
-Apply to **Production** environment.
-
-## Custom Domain Setup
-
-1. **Add Domain in Vercel**
-   - Go to Project Settings → Domains
-   - Add your custom domain (e.g., `infinitechnologies.co.ke`)
-   - Follow DNS setup instructions
-
-2. **Update Environment Variables**
-   - Update `NEXT_PUBLIC_SITE_URL` to your custom domain path
-   - Example: `https://infinitechnologies.co.ke/demo/medical-shop`
-
-3. **Redeploy**
-   - Trigger a new deployment to apply changes
-
-## Accessing Your Services
-
-After deployment:
-
-- **Main Site:** `https://your-domain.vercel.app/`
-- **MedTech Demo:** `https://your-domain.vercel.app/demo/medical-shop`
-- **Demo Shop:** `https://your-domain.vercel.app/demo/medical-shop/shop`
-- **Demo Admin:** `https://your-domain.vercel.app/demo/medical-shop/admin`
-
-## Testing Locally with Services
-
-```bash
-# Install dependencies for both services
 npm install
-cd public/demos/medical-shop && npm install && cd ../../..
-
-# Run all services together (requires Vercel CLI)
-vercel dev
-
-# OR run separately in different terminals:
-
-# Terminal 1: Main site
-npm run dev
-
-# Terminal 2: Medical shop demo
-cd public/demos/medical-shop
-npm run dev
+npm run lint
+npm run build
+node --test server/eva-proxy/worker.test.mjs
 ```
 
-## Post-Deployment Tasks
+The build also generates the site's static content pages through `scripts/pages.mjs`.
 
-### 1. Create Demo Admin User
-1. Visit `/demo/medical-shop/admin/login`
-2. Click "Sign up" and create an account
-3. In Supabase SQL Editor, run:
-   ```sql
-   UPDATE profiles SET role = 'admin' WHERE email = 'your@email.com';
-   ```
+## Environment variables
 
-### 2. Update Portfolio Link (if needed)
-The portfolio on the main site now points to `/demo/medical-shop`, which will work after deployment.
+Configure optional variables in Vercel Dashboard → Project Settings → Environment Variables.
+Apply them to the Production environment when appropriate.
 
-### 3. Test All Features
-- ✅ Main site loads correctly
-- ✅ Portfolio link to demo works
-- ✅ MedTech demo shows products
-- ✅ Cart and WhatsApp ordering work
-- ✅ Admin dashboard accessible
-- ✅ Mobile responsive
+| Variable | Required | Description | Example |
+| --- | --- | --- | --- |
+| `VITE_QUOTE_FORM_ENDPOINT` | Optional | Endpoint used by the enquiry form | `https://formspree.io/f/xxx` |
+| `VITE_EVA_API_URL` | Optional | EVA assistant API endpoint | `https://eva-proxy.workers.dev` |
+
+Do not put provider secrets in variables beginning with `VITE_`; Vite exposes those values to the browser.
+
+## Deploy through the Vercel dashboard
+
+1. Open https://vercel.com/new.
+2. Import `Otieno2/InfiniTechnologies` from GitHub.
+3. Confirm that Vercel detects the repository's `vercel.json` configuration.
+4. Add any required environment variables.
+5. Deploy the project.
+
+The configuration uses `npm install` followed by `npm run build` and serves the resulting `dist/` directory.
+
+## Deploy with the Vercel CLI
+
+```bash
+npm install -g vercel
+vercel login
+vercel --prod
+```
+
+## Custom domain
+
+1. Open the Vercel project settings and select **Domains**.
+2. Add the production domain, such as `infinitechnologies.co.ke`.
+3. Follow Vercel's DNS instructions.
+4. Set `SITE_URL` during the production build when the generated canonical URLs and sitemap must use the custom domain:
+
+```bash
+SITE_URL=https://your-domain.co.ke npm run build
+```
+
+## Post-deployment verification
+
+Check the following after deployment:
+
+- The home page loads at `/`.
+- Service and legal pages load at `/websites/`, `/business-systems/`, `/whatsapp-assistants/`, `/privacy/`, and `/terms/`.
+- The enquiry form presents the configured submission or WhatsApp fallback behavior.
+- EVA behaves correctly when `VITE_EVA_API_URL` is configured.
+- The sitemap and robots files are available.
+- The site works on a mobile device.
 
 ## Troubleshooting
 
-### Build Fails
-- Check build logs in Vercel dashboard
-- Ensure both services' dependencies are listed in their respective `package.json`
-- Verify Node.js version compatibility
+### Build fails
 
-### Medical Shop Demo Shows Errors
-- Verify Supabase environment variables are set
-- Check Supabase migrations ran successfully
-- Ensure seed data was populated
+Review the Vercel build log, confirm the Node.js version is compatible, and reproduce locally with:
 
-### Routing Issues
-- Verify `vercel.json` rewrites are correct
-- Check that paths in code match the `/demo/medical-shop` prefix
-- Clear Vercel cache and redeploy
+```bash
+npm install
+npm run build
+```
 
-### Environment Variables Not Working
-- Ensure variables are set in **Vercel Dashboard**, not `.env` files
-- Apply to correct environment (Production)
-- Redeploy after adding/updating variables
+### Environment variables are not available
 
-## Monitoring & Maintenance
+Confirm the variable name, environment scope, and that the project was redeployed after changing it. Browser-exposed variables must use the `VITE_` prefix; server-only secrets must not.
 
-### View Logs
-- Go to Vercel Dashboard → Deployments → Select deployment → Functions tab
-- Monitor errors and performance
+### Routes do not load
 
-### Update Content
-- Push changes to GitHub `main` branch
-- Vercel auto-deploys on every push
-- Or manually deploy via `vercel --prod`
+Confirm that the generated files exist in `dist/` after `npm run build` and that `vercel.json` still routes requests to `main-site`.
 
-### Database Maintenance
-- Regular backups via Supabase dashboard
-- Monitor database usage
-- Clean up demo orders periodically (reset feature in admin)
+## Ongoing maintenance
 
-## Support
-
-For issues:
-1. Check Vercel deployment logs
-2. Review Supabase logs
-3. Test locally with `vercel dev`
-4. Check environment variable configuration
-
-## Architecture Notes
-
-- **No bindings required:** Services don't call each other
-- **Shared domain:** Both services use the same domain with path-based routing
-- **Independent builds:** Each service builds separately
-- **No CORS issues:** Everything under same domain
-
-## Future Enhancements
-
-To add more demos:
-1. Add new service in `vercel.json` under `services`
-2. Add rewrite rule to route traffic to it
-3. Update portfolio to link to new demo
-4. Configure environment variables if needed
+Push changes to the GitHub `main` branch to use Vercel's automatic deployment, or deploy manually with `vercel --prod`. Review deployment logs when investigating production issues.

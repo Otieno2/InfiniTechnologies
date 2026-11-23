@@ -1,11 +1,9 @@
 import { pages } from '../data/pages';
 import { kes, packages } from '../data/packages';
-import { demos } from '../data/portfolio';
 
 export default function ServicePage({ kind }) {
   const page = pages[kind];
   const pack = packages.find((p) => p.id === page.packageId);
-  const demo = demos.find((d) => d.id === page.demoId);
 
   return (
     <>
@@ -46,18 +44,6 @@ export default function ServicePage({ kind }) {
           </div>
         </div>
       </section>
-
-      {demo?.link && (
-        <section className="bg-brand-surface py-14">
-          <div className="max-w-6xl mx-auto px-5 sm:px-8">
-            <h2 className="text-[22px] font-semibold">See how it works</h2>
-            <p className="mt-2 max-w-2xl text-brand-muted">
-              {demo.proves} This is a demo we built ourselves with sample data. It is not client work.
-            </p>
-            <a href={demo.link} className="btn-primary mt-5">Try the demo</a>
-          </div>
-        </section>
-      )}
 
       <section className="bg-white py-[72px]">
         <div className="max-w-3xl mx-auto px-5 sm:px-8">

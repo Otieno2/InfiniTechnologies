@@ -19,7 +19,6 @@ node --test server/eva-proxy/worker.test.mjs   # EVA proxy tests
 | --- | --- |
 | Contact details, business hours, response promise, founder photo, budget ranges | `src/config.js` |
 | Services, boundaries and "typical inclusions" | `src/data/services.js` |
-| Demo projects (add screenshots here) | `src/data/portfolio.js` |
 | FAQ answers | `src/data/faq.js` |
 | Privacy Notice and Terms text | `src/data/legal.js` |
 | Brand colours, fonts | `tailwind.config.js` |
@@ -32,17 +31,14 @@ policies always agree. Only promise what you can meet.
 
 1. **Quote form inbox.** Set `VITE_QUOTE_FORM_ENDPOINT` (see `.env.example`). Until then the form
    hands the enquiry to WhatsApp instead of sending it, and says so honestly.
-2. **Demo projects.** The Work section shows "In build" tiles. Build two or three demos, then in
-   `src/data/portfolio.js` set `status: 'live'` and add `image` and `link`. Label them as demos, never
-   as client work.
-3. **Founder photo.** Add a real photo to `src/assets` and set `FOUNDER.photo` in `src/config.js`.
-4. **EVA.** Either deploy `server/eva-proxy` and set `VITE_EVA_API_URL`, or leave it empty and the
-   site shows a plain "Talk to us" widget. Never put provider keys in a `VITE_` variable.
-5. **Policies.** `src/data/legal.js` is a draft that matches what the site does today. Have it
+2. **Founder photo.** Add a real photo to `src/assets` and set `FOUNDER.photo` in `src/config.js`.
+3. **EVA.** Either deploy `server/eva-proxy` and set `VITE_EVA_API_URL`, or leave it empty and the
+   site shows a plain "Talk to us" widget instead of EVA.
+4. **Policies.** `src/data/legal.js` is a draft that matches what the site does today. Have it
    reviewed, and update it if you add analytics or switch EVA on.
-6. **Social image URL.** `index.html` points `og:image` at `/og-image.png`. Social platforms need an
+5. **Social image URL.** `index.html` points `og:image` at `/og-image.png`. Social platforms need an
    absolute URL, so change it to `https://your-domain/og-image.png` once you have a domain.
-7. **Real-device test.** Submit a real enquiry from a phone and confirm it arrives.
+6. **Real-device test.** Submit a real enquiry from a phone and confirm it arrives.
 
 ## Prices, care plans and search
 
